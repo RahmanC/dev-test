@@ -1,19 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-
-interface Guest {
-  id: number;
-  avatar: string;
-  timeZone: string;
-}
-
-interface CalendarWidgetProps {
-  title: string;
-  startTime: string;
-  endTime: string;
-  guests: Guest[];
-}
+import { CalendarWidgetProps, Guest } from "../../types";
+import { getTimelineColor, getTimelineState } from "../../utils/helpers";
 
 export const CalendarWidget = ({
   title,
@@ -25,6 +14,7 @@ export const CalendarWidget = ({
   const [activeTimelineIndex, setActiveTimelineIndex] = useState<number | null>(
     null
   );
+  const [activeGuest, setActiveGuest] = useState<Guest | null>(null);
 
   return (
     <motion.div
@@ -34,7 +24,9 @@ export const CalendarWidget = ({
     >
       <motion.div
         layout
-        className={`${isExpanded ? "w-[450px]" : "w-[168px]"} space-y-4`}
+        className={`${
+          isExpanded ? "w-full lg:w-[450px]" : "w-full lg:w-[168px]"
+        } space-y-4`}
       >
         <div className="flex justify-between items-start p-4">
           <div>
@@ -72,7 +64,7 @@ export const CalendarWidget = ({
               exit={{ opacity: 0, height: 0 }}
               className="p-4 border-t border-t-[#09090B0D] flex flex-col gap-2 justify-between items-center"
             >
-              <div className="w-full flex justify-between items-center">
+              <div className="w-full flex justify-between gap-10 items-center">
                 <div className="flex items-center gap-2">
                   <span className="text-[#292929] text-sm font-medium">
                     Guests
@@ -86,16 +78,14 @@ export const CalendarWidget = ({
                   </span>
                 </div>
                 <div className="text-[#737373] text-[13px] font-normal leading-5 font-mono">
-                  your time / gmt-3
+                  {activeGuest?.timeZone}
                 </div>
               </div>
 
-              <div className="w-full flex items-center justify-between">
+              <div className="w-full flex items-center gap-10 justify-between">
                 <motion.div
                   layout
-                  className={`flex ${
-                    activeTimelineIndex !== null ? "gap-4" : "gap-0"
-                  }`}
+                  className={`flex ${activeGuest ? "gap-4" : "gap-0"}`}
                 >
                   {guests.map((guest, index) => (
                     <motion.div
@@ -118,18 +108,30 @@ export const CalendarWidget = ({
                 </motion.div>
 
                 <div className="flex items-center gap-1.5">
-                  {Array.from({ length: 7 }).map((_, index) => (
-                    <motion.div
-                      key={index}
-                      className={`w-2 h-7 rounded-full cursor-pointer ${
-                        activeTimelineIndex === index
-                          ? "bg-[#875BF7]"
-                          : "bg-[#E5E5E5]"
-                      }`}
-                      onHoverStart={() => setActiveTimelineIndex(index)}
-                      onHoverEnd={() => setActiveTimelineIndex(null)}
-                    />
-                  ))}
+                  {Array.from({ length: 7 }).map((_, index) => {
+                    const timelineState = getTimelineState(
+                      index + 1,
+                      guests,
+                      activeTimelineIndex
+                    );
+                    return (
+                      <motion.div
+                        key={index}
+                        className={`w-2 h-7 rounded-full cursor-pointer ${getTimelineColor(
+                          timelineState
+                        )}`}
+                        onHoverStart={() => {
+                          setActiveTimelineIndex(index + 1);
+                          const guest = guests.find((g) => g.id === index + 1);
+                          setActiveGuest(guest || null);
+                        }}
+                        onHoverEnd={() => {
+                          setActiveTimelineIndex(null);
+                          setActiveGuest(null);
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

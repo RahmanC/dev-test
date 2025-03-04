@@ -13,13 +13,13 @@ export const Calendar = () => {
         guests={[
           {
             id: 1,
-            avatar: debb,
-            timeZone: "debbie -2 hrs / gmt-5",
+            avatar: jerry,
+            timeZone: "jerry -5 hrs / gmt+8",
           },
           {
             id: 3,
-            avatar: jerry,
-            timeZone: "jerry -5 hrs / gmt+8",
+            avatar: debb,
+            timeZone: "debbie -2 hrs / gmt-5",
           },
           {
             id: 7,

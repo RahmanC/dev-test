@@ -26,10 +26,10 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative flex bg-white p-11.5">
-      <div className="relative w-full h-full rounded-4xl flex gap-44.5 items-center justify-center shadow-[0px_1px_2px_0px_#09090B0D,0px_0px_0px_1px_#09090B0D] ps-[113px] pe-[201px]">
+    <div className="w-screen h-screen overflow-hidden relative flex bg-white p-5 lg:p-11.5">
+      <div className="relative w-full h-full rounded-4xl flex flex-col lg:flex-row gap-0 lg:gap-44.5 items-center justify-center shadow-[0px_1px_2px_0px_#09090B0D,0px_0px_0px_1px_#09090B0D] p-5 lg:ps-[113px] lg:pe-[201px]">
         {/* Left Side Content */}
-        <div className="w-[351px] flex flex-col">
+        <div className="w-full lg:w-[351px] flex flex-col">
           <div className="flex-1">
             <p className="text-base font-medium mb-3 text-[#292929]">
               {leftContent.title}
@@ -37,11 +37,11 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
             <p className="text-sm leading-5 font-normal mb-4 text-[#737373]">
               {leftContent.description}
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full overflow-x-auto">
               {leftContent.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2 py-1 bg-[#F7F7F7] rounded-lg text-[13px] font-normal leading-[19.5px] text-[#737373]"
+                  className="px-2 py-1 bg-[#F7F7F7] rounded-lg text-[13px] font-normal leading-[19.5px] text-[#737373] min-w-max"
                 >
                   {tag}
                 </span>
@@ -50,7 +50,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="absolute bottom-[94px] left-[113px]">
+          <div className="absolute bottom-5 lg:bottom-[94px] left-5 lg:left-[113px]">
             {leftContent.navigation.previous && (
               <button
                 type="button"
@@ -75,7 +75,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
         </div>
 
         {/* Right Side Content */}
-        <div className="flex flex-1 items-center justify-center p-8">
+        <div className="flex flex-1 items-center justify-center p-2 lg:p-8">
           {children}
         </div>
       </div>
