@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Repo, Tab, Webhook } from "../components/toolbar";
+import { API, Repo, Tab, Webhook } from "../components/toolbar";
 import { Icon } from "@iconify/react";
 
 type TabType = "webhook" | "repositories" | "api" | "share";
@@ -16,7 +16,7 @@ export const Toolbar = () => {
       <AnimatePresence mode="wait">
         {activeTab === "webhook" && <Webhook key="webhook" />}
         {activeTab === "repositories" && <Repo key="repositories" />}
-        {activeTab === "api" && <>api</>}
+        {activeTab === "api" && <API key="api" />}
         {activeTab === "share" && <>share</>}
       </AnimatePresence>
 
