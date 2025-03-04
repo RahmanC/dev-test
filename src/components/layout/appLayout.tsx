@@ -26,8 +26,8 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative flex bg-white p-5 lg:p-11.5">
-      <div className="relative w-full h-full rounded-4xl flex flex-col lg:flex-row gap-0 lg:gap-44.5 items-center justify-center shadow-[0px_1px_2px_0px_#09090B0D,0px_0px_0px_1px_#09090B0D] p-5 lg:ps-[113px] lg:pe-[201px]">
+    <div className="w-screen h-screen overflow-hidden relative flex bg-white p-4 lg:p-11.5">
+      <div className="relative w-full h-full overflow-y-auto md:overflow-y-hidden rounded-4xl flex flex-col lg:flex-row gap-0 lg:gap-44.5 items-center justify-center shadow-[0px_1px_2px_0px_#09090B0D,0px_0px_0px_1px_#09090B0D] p-5 lg:ps-[113px] lg:pe-[201px]">
         {/* Left Side Content */}
         <div className="w-full lg:w-[351px] flex flex-col">
           <div className="flex-1">
@@ -66,7 +66,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
                 type="button"
                 onClick={() => navigate(leftContent.navigation.next!.path)}
                 className="bg-white/5 shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F]
-                rounded-lg py-1.5 px-2.5 text-[#292929] text-sm font-medium cursor-pointer"
+                rounded-lg py-1.5 px-2.5 text-[#292929] text-sm font-medium cursor-pointer hover:bg-[#F5F5F5]"
               >
                 {leftContent.navigation.next.text}
               </button>
@@ -75,7 +75,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
         </div>
 
         {/* Right Side Content */}
-        <div className="flex flex-1 items-center justify-center p-2 lg:p-8">
+        <div className="flex flex-1 items-center justify-center p-2 lg:p-8 w-full lg-w-auto">
           {children}
         </div>
       </div>
