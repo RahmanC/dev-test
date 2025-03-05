@@ -51,14 +51,25 @@ export const ShareWorkspace = () => {
 
       {!isSharing ? (
         <div className="flex justify-between gap-4 items-start">
-          <p className="text-[#737373] text-[13px] font-normal leading-[19.5px]">
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            exit={{ opacity: 0, y: 10 }}
+            className="text-[#737373] text-[13px] font-normal leading-[19.5px]"
+          >
             To share your workspace with other people you need to publish it
             first.
-          </p>
+          </motion.p>
           <ToggleButton />
         </div>
       ) : (
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          exit={{ opacity: 0, y: -20 }}
+        >
           <Input placeholder="/mylink.com" value="/mylink.com" />
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -69,7 +80,7 @@ export const ShareWorkspace = () => {
             <Icon icon="solar:copy-linear" className="text-[#525252] w-4.5" />
             Copy
           </motion.button>
-        </div>
+        </motion.div>
       )}
 
       <div className="flex justify-end gap-2">
