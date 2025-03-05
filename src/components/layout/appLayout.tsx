@@ -56,7 +56,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
                 type="button"
                 onClick={() => navigate(leftContent.navigation.previous!.path)}
                 className="bg-white/5 shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F]
-                rounded-lg py-1.5 px-2.5 text-[#292929] text-sm font-medium cursor-pointer"
+                rounded-lg py-1.5 px-2.5 text-[#292929] text-sm font-medium cursor-pointer hover:bg-[#F5F5F5]"
               >
                 {leftContent.navigation.previous.text}
               </button>
