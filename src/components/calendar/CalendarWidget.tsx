@@ -61,6 +61,7 @@ export const CalendarWidget = ({
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
+              transition={{ duration: 0.2, ease: "easeIn" }}
               exit={{ opacity: 0, height: 0 }}
               className="p-4 border-t border-t-[#09090B0D] flex flex-col gap-2 justify-between items-center"
             >
@@ -77,9 +78,14 @@ export const CalendarWidget = ({
                     {guests.length}
                   </span>
                 </div>
-                <div className="text-[#737373] text-[13px] font-normal leading-5 font-mono">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="text-[#737373] text-[13px] font-normal leading-5 font-mono"
+                >
                   {activeGuest?.timeZone}
-                </div>
+                </motion.div>
               </div>
 
               <div className="w-full flex items-center gap-10 justify-between">
