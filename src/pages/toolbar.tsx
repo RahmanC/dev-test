@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { API, Repo, Tab, Webhook } from "../components/toolbar";
+import { API, Repo, Tab, Webhook, Workspace } from "../components/toolbar";
 import { Icon } from "@iconify/react";
 
 type TabType = "webhook" | "repositories" | "api" | "share";
@@ -17,7 +17,7 @@ export const Toolbar = () => {
         {activeTab === "webhook" && <Webhook key="webhook" />}
         {activeTab === "repositories" && <Repo key="repositories" />}
         {activeTab === "api" && <API key="api" />}
-        {activeTab === "share" && <>share</>}
+        {activeTab === "share" && <Workspace key="share" />}
       </AnimatePresence>
 
       <div className="flex items-center gap-1 justify-between mt-2.5">

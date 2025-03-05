@@ -24,6 +24,7 @@ export interface IInput {
   label?: string;
   type?: string;
   customClass?: string;
+  value?: string;
 }
 
 export interface IButton {

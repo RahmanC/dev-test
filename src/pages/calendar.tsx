@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { CalendarWidget } from "../components/calendar/CalendarWidget";
 import debb from "../assets/1.jpg";
 import jerry from "../assets/2.jpg";
@@ -5,7 +6,13 @@ import you from "../assets/3.jpg";
 
 export const Calendar = () => {
   return (
-    <div className="w-full max-w-md mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      exit={{ opacity: 0, y: -20 }}
+      className="w-full max-w-md mx-auto"
+    >
       <CalendarWidget
         title="Engineering sync"
         startTime="1:30 PM"
@@ -28,6 +35,6 @@ export const Calendar = () => {
           },
         ]}
       />
-    </div>
+    </motion.div>
   );
 };

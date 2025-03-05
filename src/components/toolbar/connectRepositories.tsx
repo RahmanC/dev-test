@@ -21,9 +21,10 @@ export const ConnectRepositories = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
+      exit={{ opacity: 0, x: -20 }}
       className="space-y-2 bg-[#FCFCFC] shadow-[0px_1px_2px_0px_#09090B0D,0px_0px_0px_1px_#09090B0D] rounded-[10px] p-3"
     >
       <p className="text-sm font-medium text-[#292929] flex items-center gap-1">
