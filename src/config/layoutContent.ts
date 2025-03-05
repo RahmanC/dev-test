@@ -13,8 +13,8 @@ export const layoutContent = {
   },
   toolbar: {
     title: "Contextual toolbar",
-    description: `A toolbar that suggests and enables actions based on users' navigation.
-    Suggestions are related to the current page and users can perform actions inside the component, without changing to another page or context.`,
+    description:
+      "A toolbar that suggests and enables \nactions based on users' navigation. \n\nSuggestions are related to the current \npage and users can perform actions \ninside the component, without \nchanging to another page or context.",
     tags: ["React", "Tailwind css", "Motion (Framer motion)"],
     navigation: {
       previous: {

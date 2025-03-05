@@ -34,7 +34,7 @@ export const AppLayout = ({ children, leftContent }: IAppLayout) => {
             <p className="text-base font-medium mb-3 text-[#292929]">
               {leftContent.title}
             </p>
-            <p className="text-sm leading-5 font-normal mb-4 text-[#737373]">
+            <p className="text-sm leading-5 font-normal mb-4 text-[#737373] whitespace-pre-line">
               {leftContent.description}
             </p>
             <div className="flex items-center gap-2 w-full overflow-x-auto">
